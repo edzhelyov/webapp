@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Frontapp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      h3 { color: red; }
+      td { border: 1px solid black; }
+      table, td { padding: 5px; }
+    </style>
+  </head>
+  <body>
+    <% if error %>
+      <h3><%= error %></h3>
+    <% end %>
+
+    <form method="get">
+      <label for="n">Size</label>
+      <input placeholder="The 'n' parameter" type="text" id="n" name="n" value="<%= n %>"/>
+      <input type="submit" value="Generate" />
+    </form>
+
+    <% if matrix %>
+      <table>
+        <tbody>
+          <% matrix.each do |row| %>
+            <tr>
+              <% row.each do |col| %>
+                <td><%= col %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <% if saved %>
+        <strong>Saved!</strong>
+      <% else %>
+        <form method="post">
+          <input type="hidden" name="n" value="<%= n %>" />
+          <input type="submit" value="Save" />
+        </form>
+      <% end %>
+    <% end %>
+  </body>
+</html>
