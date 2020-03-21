@@ -1,4 +1,5 @@
 $LOAD_PATH << File.expand_path('../..', __FILE__)
+ENV['DATABASE'] ||= 'fibonacci.db'
 
 require 'sinatra'
 require 'consoleapp/generate'

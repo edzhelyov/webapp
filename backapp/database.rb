@@ -5,7 +5,7 @@ module Backapp
   module Database
     extend self
 
-    DB = SQLite3::Database.new 'fibonacci.db'
+    DB = SQLite3::Database.new ENV['DATABASE']
 
     DB.execute <<-SQL
   CREATE TABLE IF NOT EXISTS numbers (
