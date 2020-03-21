@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require_relative '../consoleapp/generate'
+require_relative '../consoleapp/print'
+
+number = nil
+OptionParser.new do |opts|
+  opts.banner = 'Usage: consoleapp -n NUMBER'
+
+  opts.on('-nNUMBER', 'The fibonacci sequence number') do |n|
+    number = n.to_i
+  end
+end.parse!
+
+success, result = Fibonacci::Generate.call(number)
+
+if success
+  puts Fibonacci::Print.call(result)
+else
+  puts result
+end
